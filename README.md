@@ -6,3 +6,4 @@ Classe: 5 E informatica
 
 # Sito principale
 
+[Pagina principale](https://cursedricky.github.io/tpsIt5/)
