@@ -65,10 +65,6 @@ function populate(studenti) {
     }
 }
 
-sendRequest(url)
-
-let currentDate = ""
-
 function getCurrentDate() {
     let dateUrl = "http://api.geonames.org/timezoneJSON?formatted=true&lat=47.01&lng=10.2&username=curseddo&style=full"
     let request = new XMLHttpRequest()
@@ -86,12 +82,37 @@ function getCurrentDate() {
     }
 
     return(localStorage.getItem("date"))
-    
 }
 
 function isMajor(dataCompleanno) {
-    let date = []
-    
+    let dataDiOggi = []
+
+    // Formato data di compleanno dd-mm-yy
+    let actDataCompleanno = dataCompleanno.split("-")
+    actDataCompleanno.reverse()
+
+    console.log(actDataCompleanno)
+
+    // Formato data effettivo yy-mm-dd
+    dataDiOggi = getCurrentDate().split("-")
+    if (Number(dataDiOggi[0]) - 18 >= Number(actDataCompleanno[0])) {
+        // Potrebbe essere maggiorenne
+        if (Number(actDataCompleanno[1]) > Number(dataDiOggi[1])) {
+            return false;
+        } else if (Number(actDataCompleanno[1]) == Number(dataDiOggi[1])) {
+            // Se il mese è lo stesso controlla il giorno
+            if (Number(actDataCompleanno[2]) > Number(dataDiOggi[2])) {
+                return false;
+            }
+        }
+        // Tutti i requisiti soddisfatti, è maggiorenne
+        return true;
+    }
+
+    // Non è maggiorenne
+    return false;
 }
 
-console.log(getCurrentDate())
+sendRequest(url)
+
+console.log(isMajor("22-09-2007"))
