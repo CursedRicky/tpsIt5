@@ -48,9 +48,7 @@ function populate(elementi) {
 
     for (let i in elementi) {
         const tableRow = document.createElement("tr")
-        const tableHead = document.createElement("th")
-        tableHead.innerHTML = Number(i)+1
-        tableRow.appendChild(tableHead)
+        
 
         for (let [key, value] of Object.entries(elementi[i])) {
             const tableD = document.createElement("td")
@@ -58,12 +56,12 @@ function populate(elementi) {
             tableRow.appendChild(tableD)
         }
 
-        for (let y = 0; y<categorie.length; y++) {
-            
-        }
         document.getElementById("tabella").appendChild(tableRow)
     }
+    
+    localStorage.setItem("studenti", JSON.stringify(studenti))
 }
+
 
 function getCurrentDate() {
     let d = new Date()
@@ -99,21 +97,45 @@ function isMajor(dataCompleanno) {
     return false;
 }
 
-function filtroMaggiorenne(maggiorenne) {
+function createTable() {
+    let thead = document.createElement("thead")
+    let tr = document.createElement("tr")
+    tr.setAttribute("id", "intab")
+    
+    thead.appendChild(tr)
+    document.querySelector(".table").appendChild(thead)
+
+    let tbody = document.createElement("tbody")
+    tbody.setAttribute("id", "tabella")
+    document.querySelector(".table").appendChild(tbody)
+}
+
+function filtroMaggiorenne() {
     /*
     Non rilevante -> 2
     Maggiorenne -> 1
     Minorenne -> 0
     */
-
+    
     // Svuota la tabella
     document.querySelector(".table").innerHTML = ""
 
-    
+    createTable()
+
+    let studenti = JSON.parse(localStorage.getItem("studenti"))
+    let filteredStudents = []
+
+    studenti.forEach(element => {
+        if (isMajor(element.data_di_nascita)) {
+            filteredStudents.push(element)
+        }
+    });
+
+    populate(filteredStudents)  
 }
 
-sendRequest(url)
 
-console.log(studenti.length)
+
+sendRequest(url)
 
 console.log(isMajor("23-10-2007"))
