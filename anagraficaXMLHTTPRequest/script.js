@@ -1,4 +1,5 @@
 let url = "5Einf.json";
+let studenti = []
 
 function sendRequest(url) {
     let request = new XMLHttpRequest()
@@ -7,8 +8,7 @@ function sendRequest(url) {
     request.send()
 
     request.onload = function() {
-        let studenti = []
-
+        
         // Si trasforma la richiesta da xml a json
         const json = JSON.parse(request.responseText)
         // Si trasforma il json in stringa
@@ -27,17 +27,17 @@ function sendRequest(url) {
             // console.log(test[i])
             
             // Si creano gli oggetti degli stuendi e si aggiungo all'array oggetti
-            studenti.push(JSON.parse(test[i]))
-            
+            studenti.push(JSON.parse(test[i]))   
         }
 
         populate(studenti)
+        
     }
 }
 
-function populate(studenti) {
+function populate(elementi) {
     // Prendi i nomi degli attributi
-    let categorie = Object.keys(studenti[0]);
+    let categorie = Object.keys(elementi[0]);
 
     for (let i in categorie) {
         let th = document.createElement("th")
@@ -46,13 +46,13 @@ function populate(studenti) {
         document.getElementById("intab").append(th)
     }
 
-    for (let i in studenti) {
+    for (let i in elementi) {
         const tableRow = document.createElement("tr")
         const tableHead = document.createElement("th")
         tableHead.innerHTML = Number(i)+1
         tableRow.appendChild(tableHead)
 
-        for (let [key, value] of Object.entries(studenti[i])) {
+        for (let [key, value] of Object.entries(elementi[i])) {
             const tableD = document.createElement("td")
             tableD.innerHTML = value
             tableRow.appendChild(tableD)
@@ -66,22 +66,10 @@ function populate(studenti) {
 }
 
 function getCurrentDate() {
-    let dateUrl = "http://api.geonames.org/timezoneJSON?formatted=true&lat=47.01&lng=10.2&username=curseddo&style=full"
-    let request = new XMLHttpRequest()
+    let d = new Date()
 
-    request.open("GET", dateUrl)
-    request.send()
-    
-    
-    request.onload = function() {
-
-        const json = JSON.parse(request.responseText)
-
-        let currentDate = json.sunrise.split(" ")[0]
-        localStorage.setItem("date", currentDate)
-    }
-
-    return(localStorage.getItem("date"))
+    const currentDate = `${d.getUTCFullYear()}-${d.getMonth()+1}-${d.getDate()}`
+    return(currentDate)
 }
 
 function isMajor(dataCompleanno) {
@@ -90,8 +78,6 @@ function isMajor(dataCompleanno) {
     // Formato data di compleanno dd-mm-yy
     let actDataCompleanno = dataCompleanno.split("-")
     actDataCompleanno.reverse()
-
-    console.log(actDataCompleanno)
 
     // Formato data effettivo yy-mm-dd
     dataDiOggi = getCurrentDate().split("-")
@@ -113,6 +99,21 @@ function isMajor(dataCompleanno) {
     return false;
 }
 
+function filtroMaggiorenne(maggiorenne) {
+    /*
+    Non rilevante -> 2
+    Maggiorenne -> 1
+    Minorenne -> 0
+    */
+
+    // Svuota la tabella
+    document.querySelector(".table").innerHTML = ""
+
+    
+}
+
 sendRequest(url)
 
-console.log(isMajor("22-09-2007"))
+console.log(studenti.length)
+
+console.log(isMajor("23-10-2007"))
