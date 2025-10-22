@@ -36,11 +36,13 @@ function sendRequest(url) {
 }
 
 function populate(studenti) {
+    // Prendi i nomi degli attributi
     let categorie = Object.keys(studenti[0]);
+
     for (let i in categorie) {
         let th = document.createElement("th")
         th.style.cssText = "color: #333;"
-        th.innerHTML = categorie[i].replaceAll('"', '')
+        th.innerHTML = categorie[i].replaceAll('_', ' ').toUpperCase()
         document.getElementById("intab").append(th)
     }
 
@@ -65,3 +67,31 @@ function populate(studenti) {
 
 sendRequest(url)
 
+let currentDate = ""
+
+function getCurrentDate() {
+    let dateUrl = "http://api.geonames.org/timezoneJSON?formatted=true&lat=47.01&lng=10.2&username=curseddo&style=full"
+    let request = new XMLHttpRequest()
+
+    request.open("GET", dateUrl)
+    request.send()
+    
+    
+    request.onload = function() {
+
+        const json = JSON.parse(request.responseText)
+
+        let currentDate = json.sunrise.split(" ")[0]
+        localStorage.setItem("date", currentDate)
+    }
+
+    return(localStorage.getItem("date"))
+    
+}
+
+function isMajor(dataCompleanno) {
+    let date = []
+    
+}
+
+console.log(getCurrentDate())
