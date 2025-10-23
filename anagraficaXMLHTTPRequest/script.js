@@ -1,5 +1,13 @@
-let url = "5Einf.json";
 let studenti = []
+let search = document.querySelector(".input-group input")
+let majorCheck = document.getElementById("majorCheck")
+
+function main() {
+    let url = "5Einf.json";
+    sendRequest(url)
+    search.addEventListener("input", cerca)
+    majorCheck.addEventListener("input", filtroMaggiorenne)
+}
 
 function sendRequest(url) {
     let request = new XMLHttpRequest()
@@ -97,45 +105,52 @@ function isMajor(dataCompleanno) {
     return false;
 }
 
-function createTable() {
-    let thead = document.createElement("thead")
-    let tr = document.createElement("tr")
-    tr.setAttribute("id", "intab")
-    
-    thead.appendChild(tr)
-    document.querySelector(".table").appendChild(thead)
-
-    let tbody = document.createElement("tbody")
-    tbody.setAttribute("id", "tabella")
-    document.querySelector(".table").appendChild(tbody)
-}
-
 function filtroMaggiorenne() {
     /*
     Non rilevante -> 2
     Maggiorenne -> 1
     Minorenne -> 0
     */
-    
-    // Svuota la tabella
-    document.querySelector(".table").innerHTML = ""
 
-    createTable()
-
+    let table_rows = document.querySelectorAll("tbody tr")
     let studenti = JSON.parse(localStorage.getItem("studenti"))
-    let filteredStudents = []
 
-    studenti.forEach(element => {
-        if (isMajor(element.data_di_nascita)) {
-            filteredStudents.push(element)
+    table_rows.forEach( (row, i) => {
+        let majorFlag = majorCheck.checked
+
+        if (majorFlag) {
+            if (!isMajor(studenti[i].data_di_nascita)) {
+                // Cià che si sta cercando non è presente, quindi si rende l'elemento trasparente
+                row.classList.toggle("nascosto", true)
+            }
         }
-    });
-
-    populate(filteredStudents)  
+    })
+    cerca()
 }
 
+function cerca() {
+    console.log("Cercazione in corso...")
+    let table_rows = document.querySelectorAll("tbody tr")
 
+    table_rows.forEach( (row, i) => {
+        let table_data = row.textContent
+        let searchData = search.value
 
-sendRequest(url)
+        if (table_data.toLowerCase().indexOf(searchData.toLowerCase())==-1) {
+            // Cià che si sta cercando non è presente, quindi si rende l'elemento trasparente
+            row.classList.toggle("nascosto", true)
+        } else {
+            if (majorCheck.checked) {
+                if (!isMajor(studenti[i].data_di_nascita)) {
+                    // Cià che si sta cercando non è presente, quindi si rende l'elemento trasparente
+                    row.classList.toggle("nascosto", true)
+                }        
+            } else {
+                row.classList.toggle("nascosto", false)
+            }
+        }
+        
+    })
+}
 
-console.log(isMajor("23-10-2007"))
+main()

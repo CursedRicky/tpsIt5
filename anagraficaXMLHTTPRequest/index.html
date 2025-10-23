@@ -3,24 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Font Awesome per le icone custom -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Anagrafica - JSON</title>
 </head>
 <body>
-  <h1>Anagrafica</h1>
-  <input onclick="filtroMaggiorenne()" type="button" id="btn">
-     <div class="bg mt-5 mx-5">
-                <table class="table table-striped-columns table-dark table-borderless">
-                    <thead >
-                      <tr id="intab">
-                      </tr>
-                    </thead>
-                    <tbody id="tabella">
 
-                    </tbody>
-                  </table>
-            </div>
+    <div class="table">
+      <section class="table_header">
+          <h1>Anagrafica</h1>
+          <div class="filters">
+            <label class="container"> +18
+              <input type="checkbox" id="majorCheck">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="input-group">
+            <input type="search" placeholder="Cerca...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+      </section>
+      <section class="table_body">
+        <table>
+          <thead>
+            <tr id="intab">
+              <!-- Intestazioni riempite dal JS -->
+            </tr>
+          </thead>
+          <tbody class="table_body" id="tabella">
+              <!-- Tabella riempita dal JS -->
+          </tbody>         
+        </table>
+      </section>
     </div>
+
 </body>
 <script src="./script.js"></script>
 </html>

@@ -1,108 +1,108 @@
 [
   {
-    "id": 1,
+    "n": 1,
     "cognome": "Ammirati",
     "nome": "Massimiliano",
     "data_di_nascita": "19-05-2007"
   },
   {
-    "id": 2,
+    "n": 2,
     "cognome": "Ayala",
     "nome": "Sebastie",
     "data_di_nascita": "25-07-2007"
   },
   {
-    "id": 3,
+    "n": 3,
     "cognome": "Battaglia",
     "nome": "Valerio",
     "data_di_nascita": "02-07-2007"
   },
   {
-    "id": 4,
+    "n": 4,
     "cognome": "Biroli",
     "nome": "Lucia",
     "data_di_nascita": "03-05-2007"
   },
   {
-    "id": 5,
+    "n": 5,
     "cognome": "Elsi",
     "nome": "Federico",
     "data_di_nascita": "22-10-2007"
   },
   {
-    "id": 6,
+    "n": 6,
     "cognome": "Giudici",
     "nome": "Abel",
     "data_di_nascita": "01-03-2007"
   },
   {
-    "id": 7,
+    "n": 7,
     "cognome": "Lucchetti",
     "nome": "Andrea",
     "data_di_nascita": "25-02-2007"
   },
   {
-    "id": 8,
+    "n": 8,
     "cognome": "Mansi",
     "nome": "Edoardo",
-    "data_di_nascita": "-2005"
+    "data_di_nascita": "00-00-2005"
   },
   {
-    "id": 9,
+    "n": 9,
     "cognome": "Marsano",
     "nome": "Valerio",
     "data_di_nascita": "10-01-2007"
   },
   {
-    "id": 10,
+    "n": 10,
     "cognome": "Marzi",
     "nome": "Riccardo",
     "data_di_nascita": "10-04-2007"
   },
   {
-    "id": 11,
+    "n": 11,
     "cognome": "Mauro",
     "nome": "Simone",
     "data_di_nascita": "14-02-2006"
   },
   {
-    "id": 12,
+    "n": 12,
     "cognome": "Narciso",
     "nome": "Michele",
     "data_di_nascita": "13-02-2008"
   },
   {
-    "id": 13,
+    "n": 13,
     "cognome": "Paredes",
     "nome": "Marco",
     "data_di_nascita": "22-05-2006"
   },
   {
-    "id": 14,
+    "n": 14,
     "cognome": "Raballo",
     "nome": "Enrico",
     "data_di_nascita": "22-01-2007"
   },
   {
-    "id": 15,
+    "n": 15,
     "cognome": "Ronchi",
     "nome": "Angelo",
     "data_di_nascita": "18-12-2007"
   },
   {
-    "id": 16,
+    "n": 16,
     "cognome": "Sesti",
     "nome": "Luca",
     "data_di_nascita": "19-11-2007"
   },
   {
-    "id": 17,
+    "n": 17,
     "cognome": "Viscomi",
     "nome": "Niccolo",
     "data_di_nascita": "18-04-2007"
   },
   {
-    "id": 18,
+    "n": 18,
     "cognome": "Vodola",
     "nome": "Christian",
     "data_di_nascita": "30-06-2007"
