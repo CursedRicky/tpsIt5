@@ -45,7 +45,7 @@
     "n": 8,
     "cognome": "Mansi",
     "nome": "Edoardo",
-    "data_di_nascita": "00-00-2005"
+    "data_di_nascita": "08-11-2005"
   },
   {
     "n": 9,
@@ -107,4 +107,5 @@
     "nome": "Christian",
     "data_di_nascita": "30-06-2007"
   }
+
 ]
