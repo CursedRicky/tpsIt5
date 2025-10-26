@@ -3,17 +3,20 @@ let studenti = []
 let search = document.querySelector(".input-group input")
 let majorCheck = document.getElementById("majorCheck")
 
+// Funzione principale
 function main() {
     let url = "5Einf.json";
     sendRequest(url)
     setupEventListener()
 }
 
+// Funzione che racchiude tutti gli event listener
 function setupEventListener() {
     search.addEventListener("input", cerca)
     majorCheck.addEventListener("input", cerca)
 }
 
+// Funzione che gestisce la richiesta XMLHTTP al file JSON
 function sendRequest(url) {
     let request = new XMLHttpRequest()
 
@@ -24,30 +27,13 @@ function sendRequest(url) {
         
         // Si trasforma la richiesta da xml a json
         const json = JSON.parse(request.responseText)
-        // Si trasforma il json in stringa
-        let strJson = JSON.stringify(json)
 
-        // Si tolgono le parentesi quadre (o graffe a seconda del file) all'inizio e alla fine del JSON
-        strJson = strJson.substring(1,strJson.length-1)
-
-        // Si dividono gli elementi 
-        let test = strJson.split("},")
-        for (let i in test) {
-            if (i != test.length-1) {
-                test[i] = test[i] + "}"
-            }
-
-            // console.log(test[i])
-            
-            // Si creano gli oggetti degli stuendi e si aggiungo all'array oggetti
-            studenti.push(JSON.parse(test[i]))   
-        }
-
-        populateTable(studenti)
-        
+        populateTable(json)
+        studenti = json
     }
 }
 
+// Funzione che riempie la tabella
 function populateTable(elementi) {
     // Prendi i nomi degli attributi
     let categorie = Object.keys(elementi[0]);
@@ -71,41 +57,39 @@ function populateTable(elementi) {
 
         document.getElementById("tabella").appendChild(tableRow)
     }
-    
-    localStorage.setItem("studenti", JSON.stringify(studenti))
 }
 
-
+// Funzione per ottenere la data del giorno corrente
 function getCurrentDate() {
     let d = new Date()
 
-    const currentDate = `${d.getUTCFullYear()}-${d.getMonth()+1}-${d.getDate()}`
+    // Formato data 
+    const currentDate = `${d.getDate()}-${d.getMonth()+1}-${d.getUTCFullYear()}`
     return(currentDate)
 }
 
+// Funzione per capire se l'alunno è maggiorenne
 function isMajor(dataCompleanno) {
     let dataDiOggi = []
 
-    // Formato data di compleanno dd-mm-yy
+    // Formato data dd-mm-yy
     let actDataCompleanno = dataCompleanno.split("-")
-    actDataCompleanno.reverse()
 
-    // Formato data effettivo yy-mm-dd
     dataDiOggi = getCurrentDate().split("-")
-    if (Number(dataDiOggi[0]) - 18 == Number(actDataCompleanno[0])) {
+    if (Number(dataDiOggi[2]) - 18 == Number(actDataCompleanno[2])) {
         // Potrebbe essere maggiorenne
         if (Number(actDataCompleanno[1]) > Number(dataDiOggi[1])) {
             return false;
         } else if (Number(actDataCompleanno[1]) == Number(dataDiOggi[1])) {
             // Se il mese è lo stesso controlla il giorno
-            if (Number(actDataCompleanno[2]) > Number(dataDiOggi[2])) {
+            if (Number(actDataCompleanno[0]) > Number(dataDiOggi[0])) {
                 return false;
             }
         }
         // Tutti i requisiti soddisfatti, è maggiorenne
         return true;
     
-    } else if (Number(dataDiOggi[0]) - 18 > Number(actDataCompleanno[0])) {
+    } else if (Number(dataDiOggi[2]) - 18 > Number(actDataCompleanno[2])) {
         return true;
     }
 
@@ -113,6 +97,7 @@ function isMajor(dataCompleanno) {
     return false;
 }
 
+// Funzione che ricerca un determinato dato all'interno della tabella
 function cerca() {
     console.log("Cercazione in corso...")
     let table_rows = document.querySelectorAll("tbody tr")
@@ -136,7 +121,6 @@ function cerca() {
                 row.classList.toggle("nascosto", false)
             }
         }
-        
     })
 }
 
