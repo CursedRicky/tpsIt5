@@ -1,12 +1,17 @@
 let studenti = []
+
 let search = document.querySelector(".input-group input")
 let majorCheck = document.getElementById("majorCheck")
 
 function main() {
     let url = "5Einf.json";
     sendRequest(url)
+    setupEventListener()
+}
+
+function setupEventListener() {
     search.addEventListener("input", cerca)
-    majorCheck.addEventListener("input", filtroMaggiorenne)
+    majorCheck.addEventListener("input", cerca)
 }
 
 function sendRequest(url) {
@@ -38,12 +43,12 @@ function sendRequest(url) {
             studenti.push(JSON.parse(test[i]))   
         }
 
-        populate(studenti)
+        populateTable(studenti)
         
     }
 }
 
-function populate(elementi) {
+function populateTable(elementi) {
     // Prendi i nomi degli attributi
     let categorie = Object.keys(elementi[0]);
 
@@ -87,7 +92,7 @@ function isMajor(dataCompleanno) {
 
     // Formato data effettivo yy-mm-dd
     dataDiOggi = getCurrentDate().split("-")
-    if (Number(dataDiOggi[0]) - 18 >= Number(actDataCompleanno[0])) {
+    if (Number(dataDiOggi[0]) - 18 == Number(actDataCompleanno[0])) {
         // Potrebbe essere maggiorenne
         if (Number(actDataCompleanno[1]) > Number(dataDiOggi[1])) {
             return false;
@@ -99,33 +104,13 @@ function isMajor(dataCompleanno) {
         }
         // Tutti i requisiti soddisfatti, è maggiorenne
         return true;
+    
+    } else if (Number(dataDiOggi[0]) - 18 > Number(actDataCompleanno[0])) {
+        return true;
     }
 
     // Non è maggiorenne
     return false;
-}
-
-function filtroMaggiorenne() {
-    /*
-    Non rilevante -> 2
-    Maggiorenne -> 1
-    Minorenne -> 0
-    */
-
-    let table_rows = document.querySelectorAll("tbody tr")
-    let studenti = JSON.parse(localStorage.getItem("studenti"))
-
-    table_rows.forEach( (row, i) => {
-        let majorFlag = majorCheck.checked
-
-        if (majorFlag) {
-            if (!isMajor(studenti[i].data_di_nascita)) {
-                // Cià che si sta cercando non è presente, quindi si rende l'elemento trasparente
-                row.classList.toggle("nascosto", true)
-            }
-        }
-    })
-    cerca()
 }
 
 function cerca() {
@@ -142,10 +127,12 @@ function cerca() {
         } else {
             if (majorCheck.checked) {
                 if (!isMajor(studenti[i].data_di_nascita)) {
-                    // Cià che si sta cercando non è presente, quindi si rende l'elemento trasparente
+                    // Filtro maggiorenne attivo, si rende l'elemento minorenne non visibile
                     row.classList.toggle("nascosto", true)
-                }        
-            } else {
+                } else {
+                row.classList.toggle("nascosto", false)
+                }    
+            } else if (table_data.toLowerCase().indexOf(searchData.toLowerCase())!=-1) {
                 row.classList.toggle("nascosto", false)
             }
         }
