@@ -1,0 +1,8 @@
+<!ELEMENT uni (corso+)>
+<!ELEMENT corso (docente,iscritto+)>
+<!ELEMENT docente (#PCDATA)>
+<!ELEMENT iscritto (dati, tesi?)>
+<!ELEMENT dati (#PCDATA)>
+<!ELEMENT tesi (#PCDATA)>
+
+<!ATTLIST corso tipoCorso (magistrale|master|triennale) #REQUIRED>

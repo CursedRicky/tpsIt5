@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD -->
+<!DOCTYPE libreria [
+    <!ELEMENT libreria (libro+)>
+    <!ELEMENT libro (titolo, autore, anno*, prezzo)>
+    <!ELEMENT titolo (#PCDATA)>
+    <!ELEMENT autore (#PCDATA)>
+    <!ELEMENT anno (#PCDATA)>
+    <!ELEMENT prezzo (#PCDATA)>
+]>
+
+<libreria>
+
+    <libro>
+        <titolo>
+            Il signore degli anelli
+        </titolo>
+        <autore>
+            J.J.R Tolkien
+        </autore>
+        <anno>
+            1937
+        </anno>
+        <prezzo>
+            30.6
+        </prezzo>
+    </libro>
+
+    <libro>
+        <titolo>
+            Harry Potter e la pietra filosofale
+        </titolo>
+        <autore>
+            J.K. Rowling
+        </autore>
+        <prezzo>
+            10.2
+        </prezzo>
+    </libro>
+
+    <libro>
+        <titolo>
+            Fahrenheit 451
+        </titolo>
+        <autore>
+            Ray Bradbury
+        </autore>
+        <prezzo>
+            7.5
+        </prezzo>
+    </libro>
+
+</libreria>

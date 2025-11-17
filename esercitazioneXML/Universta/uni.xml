@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="uni.dtd" type="application/xml-dtd"?>
+<uni>
+    <corso tipoCorso="magistrale">
+        <docente>
+            Ayala Sebastie
+        </docente>
+
+        <iscritto>
+            <dati>Jhon Doe</dati>
+            <tesi>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt sed illum aperiam vel officia? Molestiae accusamus, eum laborum perferendis blanditiis recusandae alias id! Voluptatem expedita beatae optio et, laudantium maiores.
+            </tesi>
+        </iscritto>
+
+        <iscritto>
+            <dati>Jhon Doe</dati>
+        </iscritto>
+
+        <iscritto>
+            <dati>Franco Ragnotti</dati>
+        </iscritto>
+
+
+    </corso>
+</uni>

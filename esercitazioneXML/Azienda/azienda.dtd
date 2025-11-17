@@ -1,0 +1,7 @@
+<!ELEMENT azienda (reparto+)>
+<!ELEMENT reparto (responsabile,impiegato+, budget*)>
+<!ELEMENT responsabile (#PCDATA)>
+<!ELEMENT impiegato (#PCDATA)>
+<!ELEMENT budget (#PCDATA)>
+
+<!ATTLIST impiegato ruolo (junior|senior) #IMPLIED>

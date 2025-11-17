@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD -->
+<!DOCTYPE scuola [
+    <!ELEMENT scuola (classe+)>
+    <!ELEMENT classe (studente+)>
+    <!ELEMENT studente (nome, cognome, voto+)>
+    <!ELEMENT nome (#PCDATA)>
+    <!ELEMENT cognome (#PCDATA)>
+    <!ELEMENT voto (#PCDATA)>
+
+    <!ATTLIST classe anno CDATA #REQUIRED>
+    <!ATTLIST studente sesso (M|F) #REQUIRED>
+]>
+
+<scuola>
+
+    <classe anno="5">
+        <studente sesso="M">
+            <nome>
+                Marzi
+            </nome>
+            <cognome>
+                Riccardo
+            </cognome>
+            <voto>
+                9
+            </voto>
+        </studente>
+
+        <studente sesso="M">
+            <nome>
+                Michele
+            </nome>
+            <cognome>
+                Narciso
+            </cognome>
+            <voto>
+                7
+            </voto>
+            <voto>
+                6.5
+            </voto>
+        </studente>
+
+        <studente sesso="F">
+            <nome>
+                Biroli
+            </nome>
+            <cognome>
+                Lucia
+            </cognome>
+            <voto>
+                10
+            </voto>
+        </studente>
+    </classe>
+
+</scuola>

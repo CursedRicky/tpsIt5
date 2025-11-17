@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="azienda.dtd" type="application/xml-dtd"?>
+
+<azienda>
+    <reparto>
+        
+        <responsabile>
+            Antonio Nocetti
+        </responsabile>
+
+        <impiegato ruolo="junior">
+            Marco Vercelli
+        </impiegato>
+        <impiegato ruolo="senior">
+            Frodo Baggins
+        </impiegato>
+
+        <budget>
+            5000€
+        </budget>
+
+    </reparto>
+</azienda>

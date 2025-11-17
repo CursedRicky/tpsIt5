@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="catalogo.dtd" type="application/xml-dtd"?>
+
+<prodotti>
+    <prodotto id="fx01" disponibile="si">
+        <nome>
+            Gibson Les Paul 60' Custom Shop
+        </nome>
+        <prezzo>
+            3220
+        </prezzo>
+        <descrizione>
+            La leggendaria Les Paul anni '60
+        </descrizione>
+    </prodotto>
+
+    <prodotto id="fx02" disponibile="no">
+        <nome>
+            PRS SE 24 STANDARD
+        </nome>
+        <prezzo>
+            650
+        </prezzo>
+        <descrizione>
+            La mia chitarra
+        </descrizione>
+    </prodotto>
+</prodotti>
