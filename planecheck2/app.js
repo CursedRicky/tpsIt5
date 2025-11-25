@@ -44,7 +44,7 @@ function readCSV() {
                 let data = csv[i].replaceAll('"', '')
                 data = data.replaceAll('\r', '')
                 const effData = data.split(",")
-                const item = {nome: effData[0], modello: effData[1], prezzo: effData[2], immagine: effData[3]}
+                const item = {nome  : effData[0], modello: effData[1], prezzo: effData[2], immagine: effData[3]}
                 items.push(item)
             }
         }
@@ -54,10 +54,13 @@ function readCSV() {
 }
 
 function creaProdotti(listaProdotti) {
-    console.log(listaProdotti)
+    let prodottiDiv = document.querySelector(".products")
     for (let i in listaProdotti) {
-        console.log(listaProdotti[i].nome)
+        let nome = document.createElement("p")
+        nome.innerText = listaProdotti[i].modello
+        prodottiDiv.appendChild(nome)
     }
 }
 
 readCSV()
+readJSON()

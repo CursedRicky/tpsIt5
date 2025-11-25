@@ -7,7 +7,7 @@
   },
   {
     "nome": "ANAL11",
-    "modello": "Airbus A330",
+    "modello": "Airbus A220",
     "prezzo": 450000000,
     "immagine": ".imgs/products/linea/ANAL11.png"
   },
@@ -16,5 +16,11 @@
     "modello": "Airbus A350",
     "prezzo": 550000000,
     "immagine": ".imgs/products/linea/CKLA5S.png"
+  },
+  {
+    "nome": "PJIAL",
+    "modello": "Boeing 737",
+    "prezzo": 530000001   ,
+    "immagine": ".imgs/products/linea/PJIAL.png"
   }
 ]
