@@ -1,0 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kedebideri:wght@400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.bg {
+    /* background: url("https://flyingmag1.b-cdn.net/wp-content/uploads/sites/2/2012/02/399113-_BP20765-6c1cfd-original-1629145877-scaled-1.jpg"); */
+    clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
+    width: 100%;
+}
+

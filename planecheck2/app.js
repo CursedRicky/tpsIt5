@@ -53,13 +53,43 @@ function readCSV() {
     }
 }
 
+let planes = []
 function creaProdotti(listaProdotti) {
     let prodottiDiv = document.querySelector(".products")
     for (let i in listaProdotti) {
-        let nome = document.createElement("p")
-        nome.innerText = listaProdotti[i].modello
-        prodottiDiv.appendChild(nome)
+        let card = document.createElement("div")
+        card.classList.add("card")
+        card.classList.add("col-3")
+        card.classList.add("mx-auto")
+        card.classList.add("my-5")
+        card.style.width = "18rem"
+        card.innerHTML = 
+        `<img src="./imgs/${listaProdotti[i].immagine}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${listaProdotti[i].modello}</h5>
+            <p class="card-text">€${listaProdotti[i].prezzo}</p>
+            <a href="#" class="btn btn-primary">Compra</a>
+        </div>`
+        planes.push(card)
+        
+        if (planes.length == 3) {
+            let div = document.createElement("div")
+            div.classList.add("row")
+            for (let y in planes) {
+                div.appendChild(planes[y])
+            }
+            prodottiDiv.appendChild(div)
+            planes = []
+        }
     }
+
+    let div = document.createElement("div")
+    div.classList.add("row")
+    for (let y in planes) {
+        div.appendChild(planes[y])
+    }
+    prodottiDiv.appendChild(div)
+    
 }
 
 readCSV()
