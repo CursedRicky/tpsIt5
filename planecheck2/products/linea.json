@@ -3,18 +3,21 @@
     "nome": "AJCH7A",
     "modello": "Airbus A320",
     "prezzo": 349000000,
-    "immagine": "linea/AJCH7A.webp"
+    "immagine": "linea/AJCH7A.webp",
+    "sconto": false
   },
   {
     "nome": "ANAL11",
     "modello": "Airbus A220",
     "prezzo": 450000000,
-    "immagine": "linea/ANAL11.jpg"
+    "immagine": "linea/ANAL11.jpg",
+    "sconto": false
   },
   {
     "nome": "PJIAL",
     "modello": "Boeing 737-800",
     "prezzo": 530000001   ,
-    "immagine": "linea/PJIAL.webp"
+    "immagine": "linea/PJIAL.webp",
+    "sconto": false
   }
 ]

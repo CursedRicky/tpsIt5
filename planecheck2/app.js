@@ -63,12 +63,13 @@ function creaProdotti(listaProdotti) {
         card.classList.add("mx-auto")
         card.classList.add("my-5")
         card.style.width = "18rem"
+        listaProdotti[i].immagine = listaProdotti[i].immagine.replaceAll(" ", "")
         card.innerHTML = 
         `<img src="./imgs/${listaProdotti[i].immagine}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${listaProdotti[i].modello}</h5>
             <p class="card-text">€${listaProdotti[i].prezzo}</p>
-            <a href="#" class="btn btn-primary">Compra</a>
+            <a href="#" class="btn btn-primary">Acquista</a>
         </div>`
         planes.push(card)
         
