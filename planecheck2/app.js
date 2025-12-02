@@ -2,6 +2,9 @@ let urlJSON = "./products/linea.json"
 let urlXML = "./products/ultraleggeri.xml"
 let urlCSV = "./products/generale.csv"
 
+let search = document.querySelector(".input-group input")
+search.addEventListener("input", cerca)
+
 function readJSON() {
     let request = new XMLHttpRequest()
 
@@ -24,7 +27,17 @@ function readXML() {
     request.send()
 
     request.onload = function() {
-        creaProdotti(request.responseXML)  
+        let items = []
+        const xmlContent = request.response
+        
+        const xmlDocument = new DOMParser().parseFromString(xmlContent, "text/xml") 
+        const aerei = xmlDocument.querySelectorAll("aereo") // Prendi tutti i tag eareo
+
+        for (const aereo of aerei) {
+            const item = {nome  : aereo.querySelector("nome").textContent, modello: aereo.querySelector("modello").textContent, prezzo: aereo.querySelector("prezzo").textContent, immagine: aereo.querySelector("immagine").textContent, sconto: aereo.querySelector("sconto").textContent, descrizione: aereo.querySelector("descrizione").textContent}
+            items.push(item)
+        }
+        creaProdotti(items)
     }
 }
 
@@ -65,15 +78,38 @@ function creaProdotti(listaProdotti) {
         card.style.width = "18rem"
         listaProdotti[i].immagine = listaProdotti[i].immagine.replaceAll(" ", "")
         card.innerHTML = 
-        `<img src="./imgs/${listaProdotti[i].immagine}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">${listaProdotti[i].modello}</h5>
-            <p class="card-text">€${listaProdotti[i].prezzo}</p>
-            <a href="#" class="btn btn-primary">Acquista</a>
-        </div>`
-        card.onclick = function () {
+        `<img src="./imgs/${listaProdotti[i].immagine}" class="card-img-top" alt="...">`
+        // <div class="card-body">
+        //     <h5 class="card-title">${}</h5>
+        //     <p class="card-text">€${listaProdotti[i].prezzo}</p>
+        //     <a href="./product.html" class="btn btn-primary">Acquista</a>
+        // </div>
+        let cardBody = document.createElement("div")
+        cardBody.classList.add("card-body")
+        let aCardTitle = document.createElement("a")
+        aCardTitle.href = "./product.html"
+        let cardTitle = document.createElement("h5")
+        cardTitle.innerHTML = listaProdotti[i].modello
+        cardTitle.classList.add("card-title")
+        cardTitle.onclick = function () {
             localStorage.setItem("prodotto", JSON.stringify(listaProdotti[i]))
         }
+        aCardTitle.appendChild(cardTitle)
+        cardBody.appendChild(aCardTitle)
+
+        let cardText = document.createElement("p")
+        cardText.classList.add("card-text")
+        cardText.innerHTML = listaProdotti[i].prezzo + " €"
+        cardBody.appendChild(cardText)
+
+        let carrello = document.createElement("a")
+        carrello.href = "./cart.html"
+        carrello.innerHTML = "+"
+        carrello.classList.add("btn")
+        carrello.classList.add("btn-primary")
+        cardBody.appendChild(carrello)
+
+        card.appendChild(cardBody)
         planes.push(card)
         
         if (planes.length == 3) {
@@ -95,9 +131,30 @@ function creaProdotti(listaProdotti) {
     prodottiDiv.appendChild(div)
 }
 
-function aggiungiAlCarrello(test) {
-    console.log(test)
+function aggiungiAlCarrello() {
+    ;
+}
+
+function cerca() {
+    let table_rows = document.querySelectorAll(".products")
+    let searchData = search.value
+    
+    for (let products of table_rows) {
+        let row = products.querySelectorAll(".row")
+        for (let ins of row) {
+            let cards = ins.querySelectorAll(".card")
+            for (let card of cards) {
+                let title = card.querySelector(".card-title").textContent
+                if (title.toLowerCase().indexOf(searchData.toLowerCase())==-1) {
+                    card.classList.toggle("nascosto", true)
+                } else {
+                    card.classList.toggle("nascosto", false)
+                }
+            }
+        }
+    }
 }
 
 readCSV()
 readJSON()
+readXML()
