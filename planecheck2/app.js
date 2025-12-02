@@ -44,7 +44,7 @@ function readCSV() {
                 let data = csv[i].replaceAll('"', '')
                 data = data.replaceAll('\r', '')
                 const effData = data.split(",")
-                const item = {nome  : effData[0], modello: effData[1], prezzo: effData[2], immagine: effData[3]}
+                const item = {nome  : effData[0], modello: effData[1], prezzo: effData[2], immagine: effData[3], sconto: effData[4], descrizione: effData[5]}
                 items.push(item)
             }
         }
@@ -71,6 +71,9 @@ function creaProdotti(listaProdotti) {
             <p class="card-text">€${listaProdotti[i].prezzo}</p>
             <a href="#" class="btn btn-primary">Acquista</a>
         </div>`
+        card.onclick = function () {
+            localStorage.setItem("prodotto", JSON.stringify(listaProdotti[i]))
+        }
         planes.push(card)
         
         if (planes.length == 3) {
@@ -90,7 +93,10 @@ function creaProdotti(listaProdotti) {
         div.appendChild(planes[y])
     }
     prodottiDiv.appendChild(div)
-    
+}
+
+function aggiungiAlCarrello(test) {
+    console.log(test)
 }
 
 readCSV()

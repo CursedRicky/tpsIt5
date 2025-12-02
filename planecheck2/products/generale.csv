@@ -1,4 +1,4 @@
-"nome", "modello", "prezzo", "immagine", "sconto"
-"PH-TGV", "Cessna 172 G1000", 490100, "generale/PH-TGV.webp", false
-"JFTRA", "PIPER PA 28 ", 85000, "generale/JFTRA.jpg", false
-"FUER8", "Cessna 152", 99000, "generale/FUER8.jpg", false
+"nome", "modello", "prezzo", "immagine", "sconto", "descrizione"
+"PH-TGV", "Cessna 172 G1000", 490100, "generale/PH-TGV.webp", false, "dddddddddddd"
+"JFTRA", "PIPER PA 28 ", 85000, "generale/JFTRA.jpg", false, "eeeeeeeeeeeeeeee"
+"FUER8", "Cessna 152", 99000, "generale/FUER8.jpg", false, "ffffffffffffffffff"
