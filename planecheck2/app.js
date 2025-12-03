@@ -79,11 +79,6 @@ function creaProdotti(listaProdotti) {
         listaProdotti[i].immagine = listaProdotti[i].immagine.replaceAll(" ", "")
         card.innerHTML = 
         `<img src="./imgs/${listaProdotti[i].immagine}" class="card-img-top" alt="...">`
-        // <div class="card-body">
-        //     <h5 class="card-title">${}</h5>
-        //     <p class="card-text">€${listaProdotti[i].prezzo}</p>
-        //     <a href="./product.html" class="btn btn-primary">Acquista</a>
-        // </div>
         let cardBody = document.createElement("div")
         cardBody.classList.add("card-body")
         let aCardTitle = document.createElement("a")
@@ -103,7 +98,17 @@ function creaProdotti(listaProdotti) {
         cardBody.appendChild(cardText)
 
         let carrello = document.createElement("a")
-        carrello.href = "./cart.html"
+        carrello.onclick = function () {
+
+            let cart = localStorage.getItem("cart")
+            console.log(cart)
+            if (cart == null) {
+                cart = JSON.stringify(listaProdotti[i])
+            } else {
+                cart += "|" + JSON.stringify(listaProdotti[i])
+            }
+            localStorage.setItem("cart", cart)
+        }
         carrello.innerHTML = "+"
         carrello.classList.add("btn")
         carrello.classList.add("btn-primary")
