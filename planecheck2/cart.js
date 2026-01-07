@@ -8,9 +8,10 @@ window.onload = function () {
         totale += parseInt(prodottoOBJ.prezzo)
         divProdotti.innerHTML +=
         `<div class="row">
-            <div class="col-6">${prodottoOBJ.nome}</div>
+            <div class="col-5">${prodottoOBJ.modello}</div>
             <div class="col-2"></div>
-            <div class="col-4">${prodottoOBJ.prezzo}€</div>
+            <div class="col-3">${prodottoOBJ.prezzo}€</div>
+            <div class="col-1">-</div>
         </div>`
     }
     const totaleLable = document.getElementById("totale")

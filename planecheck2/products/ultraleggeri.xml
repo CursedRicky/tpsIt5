@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE aerei [
     <!ELEMENT aerei (aereo+)>
-    <!ELEMENT aereo (nome, modello, prezzo, immagine)>
+    <!ELEMENT aereo (nome, modello, prezzo, immagine, sconto, descrizione)>
     <!ELEMENT nome (#PCDATA)>
     <!ELEMENT modello (#PCDATA)>
     <!ELEMENT prezzo (#PCDATA)>
     <!ELEMENT immagine (#PCDATA)>
+    <!ELEMENT sconto (#PCDATA)>
+    <!ELEMENT descrizione (#PCDATA)>
 ]>
 
 <aerei>
@@ -13,13 +15,17 @@
         <nome>VDFJ9</nome>
         <modello>Vimana ICP</modello>
         <prezzo>24000</prezzo>
-        <immagine></immagine>
+        <immagine>ultralight/VDFJ9.jpg</immagine>
+        <sconto>false</sconto>
+        <descrizione>VVVVVVVVVVVVVVVV</descrizione>
     </aereo>
 
     <aereo>
         <nome>SBROB5</nome>
         <modello>Savannah ICP</modello>
         <prezzo>18000</prezzo>
-        <immagine></immagine>
+        <immagine>ultralight/SBROB5.jpg</immagine>
+        <sconto>false</sconto>
+        <descrizione>SSSSSSSSSSS</descrizione>
     </aereo>
 </aerei>

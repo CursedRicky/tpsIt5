@@ -107,6 +107,7 @@ function creaProdotti(listaProdotti) {
             } else {
                 cart += "|" + JSON.stringify(listaProdotti[i])
             }
+            alert("Prodotto aggiunto al carrello!")
             localStorage.setItem("cart", cart)
         }
         carrello.innerHTML = "+"
@@ -134,10 +135,6 @@ function creaProdotti(listaProdotti) {
         div.appendChild(planes[y])
     }
     prodottiDiv.appendChild(div)
-}
-
-function aggiungiAlCarrello() {
-    ;
 }
 
 function cerca() {
