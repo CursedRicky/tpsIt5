@@ -11,10 +11,13 @@ window.onload = function () {
             <div class="col-5">${prodottoOBJ.modello}</div>
             <div class="col-2"></div>
             <div class="col-3">${prodottoOBJ.prezzo}€</div>
-            <div class="col-1">-</div>
+            <div class="col-1"><a href="." style="text-decoration: none; color: red">-</a></div>
         </div>`
     }
     const totaleLable = document.getElementById("totale")
     totaleLable.innerHTML = totale +"€"
 }
 
+function paga() {
+    window.print()
+}
